@@ -8,6 +8,12 @@ jupyter = "*"
 lab = "*"
 pandas = "*"
 scikit-learn = "*"
+plotly = "*"
+plotly-express = "*"
+nodejs = "*"
+npm = "*"
+jupyterlab = "*"
+ipywidgets = ">=7.5"
 
 [dev-packages]
 
