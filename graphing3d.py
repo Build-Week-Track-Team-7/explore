@@ -1,5 +1,6 @@
 import pandas as pd
 import plotly.express as px
+from joblib import load
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 
@@ -13,12 +14,9 @@ music_scale = pd.DataFrame(data=StandardScaler().fit_transform(music_df),
                            columns=music_df.columns,
                            index=music_df.index)
 # creating cluster defenition to call back when running kmeans
-kmeans = KMeans(n_clusters=10, random_state=42)
-kmeans.fit(music_scale.values)
-# find the centers of the Kmeans data
-centers = kmeans.cluster_centers_
+pipeline = load('pipeline.joblib')
 # prepare the lables of Kmeans for graphing
-labels = kmeans.labels_
+labels = pipeline.labels_
 # adding lables to color code each group type
 music_df['group'] = labels.astype(str)
 # sampling the dataset to make a more managable graph
